@@ -11,6 +11,7 @@ from typing_extensions import Annotated
 from bson import ObjectId
 import motor.motor_asyncio
 from pymongo import ReturnDocument
+from pymongo.mongo_client import MongoClient
 
 
 app = FastAPI(
@@ -18,6 +19,8 @@ app = FastAPI(
     summary="A sample application showing how to use FastAPI to add a ReST API to a MongoDB collection.",
 )
 client = motor.motor_asyncio.AsyncIOMotorClient(os.environ["MONGODB_URL"])
+
+
 db = client.college
 student_collection = db.get_collection("students")
 
